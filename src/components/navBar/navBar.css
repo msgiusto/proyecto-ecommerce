@@ -1,0 +1,27 @@
+.navbar
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0px 10px;
+    background-color: gainsboro;
+}
+
+.navbar_ul
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    list-style: none;
+}
+
+.navbar_li
+{
+    margin-right: 20px;
+}
+
+a
+{
+    text-decoration: none;
+    color: black;
+}
