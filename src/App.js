@@ -1,5 +1,6 @@
 import './App.css';
-import {NavBar} from './components/navBar/navBar'
+import { NavBar } from './components/navBar/navBar'
+import { ItemListContainer } from './components/itemListContainer/itemListContainer'
 
 function App() {
     return (
@@ -8,6 +9,7 @@ function App() {
         {/* <header className="App-header">
 
         </header> */}
+        <ItemListContainer greeting={"La no lista de items"}/>
     </div>
     );
 }
