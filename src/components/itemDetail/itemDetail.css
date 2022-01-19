@@ -1,0 +1,15 @@
+.itemDetailBody
+{
+    border-style: solid;
+    border-color: black;
+    background-color: cornsilk;
+    margin: 10px;
+    padding: 5px;
+    display: inline-block;
+}
+
+.itemDetailImage
+{
+    height: 200px;
+    margin: 5px;
+}
