@@ -27,8 +27,17 @@ export const ItemListContainer = ({ greeting }) =>
             <p>
                 {greeting}
             </p>
-            <ItemCount stock={5} initial={1} />
-            <ItemList products = {products} />
+            {
+                /*Pongo el cartel de cargando el catálogo mientras esperamos el fetch*/
+                products.length > 0 ? 
+                (
+                    <ItemList products = {products} />
+                )
+                :
+                (
+                    <p>Cargando el catálogo...</p>
+                )
+            }
         </div>
     )
 }

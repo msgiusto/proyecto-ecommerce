@@ -9,6 +9,7 @@ export const ItemList = ({ products }) =>
                 return (
                     <Item
                         key={product.id}
+                        idItem={product.id}
                         title={product.title}
                         pictureUrl={product.pictureUrl}
                         price={product.price}

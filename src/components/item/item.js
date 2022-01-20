@@ -1,18 +1,18 @@
 import './item.css'
+import { Link } from 'react-router-dom';
 
-export const Item = ({ title, price, pictureUrl, description }) => 
+export const Item = ({ idItem, title, price, pictureUrl, description }) => 
 {
     return (
         <div className="itemBody">
             <div>
-                <h2>Item</h2>
-                <h3>{title}</h3>
+                <h2>{title}</h2>
                 <h3>{description}</h3>
                 <h4>${price}</h4>
                 <img alt={title} src={pictureUrl} className='itemImage'></img>
             </div>
             {/* Agrego el botón aunque todavía no hace nada*/}
-            <button>Ver detalle del producto</button>
+            <button><Link to={`/item/${idItem}`}> Ver detalle del producto </Link></button>
         </div>
     );
   };

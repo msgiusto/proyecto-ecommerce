@@ -2,22 +2,37 @@ import './App.css';
 import { NavBar } from './components/navBar/navBar'
 import { ItemListContainer } from './components/itemListContainer/itemListContainer'
 import { ItemDetailContainer } from './components/itemDetailContainer/itemDetailContainer'
+import { BrowserRouter as Router, Switch, Route} from 'react-router-dom'
+import { Error } from './components/error/error'
 
 function App() {
     return (
-    <div className="App">
-        <NavBar />
-        {/* <header className="App-header">
+        <Router>
+            <div className="App">
+                {/*Queda afuera del Switch para que esté siempre visible*/} 
+                <NavBar />
+                    <Switch>
+                        <Route exact path='/'>
+                            <ItemListContainer greeting={"Bienvenidos a la No tienda :D"} />
+                        </Route>
+            
+                        <Route path='/category/:categoryId'>
+                            <ItemListContainer greeting={"Estos son todos los productos disponibles al momento"} />
+                        </Route>
 
-        </header> */}
-        {
-            /* Comento esta línea para que no meta ruido y poder ver bien los cambios de la entrega 6
-            <ItemListContainer greeting={"La no lista de items"}/>
-            */
-        }
-        <ItemDetailContainer idItem={2}/>
+                        <Route path='/item/:itemId'>
+                            <ItemDetailContainer idItem={2}/>
+                        </Route>
 
-    </div>
+                        <Route path='*'>
+                            <Error />
+                        </Route>
+                    </Switch>
+                <footer>
+                    <p>La No tienda S.A. TM 2022</p>
+                </footer>
+            </div>
+        </Router>
     );
 }
 
