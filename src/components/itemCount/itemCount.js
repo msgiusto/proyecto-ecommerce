@@ -2,7 +2,7 @@ import './itemCount.css';
 import { useState } from "react";
 
 
-export const ItemCount = ({ stock, initial }) => 
+export const ItemCount = ({ stock, initial, onAdd }) => 
 {
     // Creo el state para el contador
     const [count, setCount] = useState(initial);
@@ -19,20 +19,6 @@ export const ItemCount = ({ stock, initial }) =>
         }
     }
 
-    // Función auxiliar para mostrar cuánto se agregó al carrito.
-    // Debería pasarse por prop pero dada su función ahora necesita estar adentro de ItemCount
-    // porque necesita acceder al state count
-    const onAdd = () => 
-    {
-        if (count > 1)
-        {
-            alert(`Se agregaron ${count} productos`);
-        }
-        else
-        {
-            alert(`Se agrego ${count} producto`);
-        }
-    }
     const onDecrease = () =>
     {
         const i = count - 1;
@@ -49,7 +35,7 @@ export const ItemCount = ({ stock, initial }) =>
                 <span> {count} </span>
                 <button onClick={onIncrease}> + </button>
             </div>
-            <button onClick={onAdd}> Agregar al Carrito</button>
+            <button onClick={()=>onAdd(count)}> Agregar al Carrito</button>
         </div>
     )
 }

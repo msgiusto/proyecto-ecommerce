@@ -4,6 +4,7 @@ import { ItemListContainer } from './components/itemListContainer/itemListContai
 import { ItemDetailContainer } from './components/itemDetailContainer/itemDetailContainer'
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import { Error } from './components/error/error'
+import { Cart } from './components/cart/cart'
 
 function App() {
     return (
@@ -22,6 +23,10 @@ function App() {
 
                         <Route path='/item/:itemId'>
                             <ItemDetailContainer idItem={2}/>
+                        </Route>
+
+                        <Route path='/cart'>
+                            <Cart />
                         </Route>
 
                         <Route path='*'>
