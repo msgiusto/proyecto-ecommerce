@@ -1,7 +1,7 @@
 import './itemDetail.css'
 import { ItemCount } from '../itemCount/itemCount';
 import { Link } from 'react-router-dom';
-import { useState, useEffect, useContext } from 'react'
+import { useState, useContext } from 'react'
 import { cartContext } from '../context/cartContext';
 
 export const ItemDetail = ({ title, price, pictureUrl, description, id }) => 
@@ -19,12 +19,11 @@ export const ItemDetail = ({ title, price, pictureUrl, description, id }) =>
         // Cuando se hace click en agregar al carrito en ItemCount se entra acá 
         // se guarda la cantidad y se agrega a cartContex
         setQToAdd(quantityToAdd);
-        addItem({ id, title, description, price, qToAdd });
+
+        addItem({ id, title, description, price, quantityToAdd });
 
         setShowItemCount(false);
     };
-
-
 
     return (
         <div className="itemDetailBody">
@@ -33,10 +32,9 @@ export const ItemDetail = ({ title, price, pictureUrl, description, id }) =>
                 <h2>{title}</h2>
                 <h3>{description}</h3>
                 <h4>${price}</h4>
-                <p>Este es el ID: {id}</p>
             </div>
 
-            {showItemCount && <ItemCount stock={5} initial={1} onAdd={onAdd} />}
+            {showItemCount && <ItemCount stock={5} initial={1} onAddIC={onAdd} />}
             <Link to='/cart'><button>Terminar mi compra</button></Link>
         </div>
     );

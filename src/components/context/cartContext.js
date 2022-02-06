@@ -1,6 +1,5 @@
-import { clear } from "@testing-library/user-event/dist/clear"
-import { createContext, useEffect } from "react"
-import { useState } from "react/cjs/react.development"
+import { createContext, useEffect, useState } from "react"
+//import { useState } from "react/cjs/react.development"
 
 const initialCartContext = []
 
@@ -46,6 +45,7 @@ export const CartProvider = ({ children }) =>
             // Hago el set de cartProduct con el elemento eliminado (asumo que está una única vez por construcción)
             setCartProducts(cartProducts.splice(iToRemove, 1));
 
+            // Por ahora son console.log más adelante serán en el DOM
             console.log("Fue eliminado correctamente el item con id", itemId)
         }
         else

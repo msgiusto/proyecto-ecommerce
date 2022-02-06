@@ -2,7 +2,7 @@ import './itemCount.css';
 import { useState } from "react";
 
 
-export const ItemCount = ({ stock, initial, onAdd }) => 
+export const ItemCount = ({ stock, initial, onAddIC }) => 
 {
     // Creo el state para el contador
     const [count, setCount] = useState(initial);
@@ -35,7 +35,7 @@ export const ItemCount = ({ stock, initial, onAdd }) =>
                 <span> {count} </span>
                 <button onClick={onIncrease}> + </button>
             </div>
-            <button onClick={()=>onAdd(count)}> Agregar al Carrito</button>
+            <button onClick={()=>onAddIC(count)}> Agregar al Carrito</button>
         </div>
     )
 }

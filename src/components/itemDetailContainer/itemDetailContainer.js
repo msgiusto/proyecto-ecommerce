@@ -17,7 +17,6 @@ export const ItemDetailContainer = () =>
         const getItemJson = await getItemFetch.json();
         // Me quedo el item solicitado
         setItem(getItemJson[itemId-1]);   
-        console.log("este es el item que tengo antes de llamar a itemDetail", item.id);
     };
 
     useEffect( () =>
@@ -38,7 +37,7 @@ export const ItemDetailContainer = () =>
                         price={item.price}
                         pictureUrl={item.pictureUrl}
                         description={item.description}
-                        itemId={item.id}
+                        id={item.id}
                     />
                 )
                 :
