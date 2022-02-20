@@ -1,5 +1,4 @@
-import { createContext, useEffect, useState } from "react"
-//import { useState } from "react/cjs/react.development"
+import { createContext, useState } from "react"
 
 const initialCartContext = []
 
@@ -8,55 +7,56 @@ export const cartContext = createContext(initialCartContext)
 export const CartProvider = ({ children }) =>
 {
     const [cartProducts, setCartProducts] = useState([]);
+    const [cantidadTotal, setCantidadTotal] = useState (0);
+    const [precioTotal, setPrecioTotal] = useState (0);
 
     const addItem = (item) =>
     {
-        var isIn = false;
-
         // Controlo que el producto ya no esté en el carrito
-        cartProducts.forEach( product => 
-        {
-            isIn = (isIn || product.id == item.id)    
-        });
+        var isIn = isInCart(item.id);
         
         // Por ahora aviso por console que algo ya está en el carrito
-        (isIn ? console.log("el siguiente producto ya está en el carrito", item.desciption) : setCartProducts([...cartProducts, item]));
-
-        // Muestro cómo quedó el carrito
-        console.log("Así quedó el carrito", cartProducts);
+        if(isIn)
+        {
+            let copiaCart = [...cartProducts];
+            let itemToModify = copiaCart.find(product => product.id === item.id);
+            let idx = copiaCart.indexOf(itemToModify);
+            copiaCart[idx].quantityToAdd = copiaCart[idx].quantityToAdd + item.quantityToAdd;
+            setCartProducts(copiaCart);
+        }
+        else
+        {
+            setCartProducts([...cartProducts, item]);
+        }
+        
+        setPrecioTotal(precioTotal + (item.price * item.quantityToAdd));
+        setCantidadTotal(cantidadTotal + item.quantityToAdd);
     }
 
     const removeItem = (itemId) =>
     {
-        // Verifico que el ítem esté en el carrito
+        // Verifico que el ítem esté en el carrito. No haría falta ya que por construcción nunca voy a usar la }
+        // función con un elemento que no esté en el carrito.
         if(isInCart(itemId))
         {
-            var iToRemove = 0;
-
-            // Averiguo cuál es la posición del ítem
-            for (let index = 0; index < cartProducts.length; index++) 
-            {
-                if(cartProducts[index].id == itemId)
-                {
-                    iToRemove = index;
-                } 
-            }
-
-            // Hago el set de cartProduct con el elemento eliminado (asumo que está una única vez por construcción)
-            setCartProducts(cartProducts.splice(iToRemove, 1));
-
-            // Por ahora son console.log más adelante serán en el DOM
-            console.log("Fue eliminado correctamente el item con id", itemId)
+            const itemToRemove = cartProducts.find(item => item.id == itemId);
+            const copiaCart = cartProducts.filter(item => item.id !== itemId);
+            setCartProducts(copiaCart);
+            setPrecioTotal(precioTotal - (itemToRemove.price * itemToRemove.quantityToAdd));
+            setCantidadTotal(cantidadTotal - itemToRemove.quantityToAdd);
         }
         else
         {
             console.log("El siguiente item no estaba en el carrito", itemId)
         }
+        
     }
 
     const clear = () =>
     {
         setCartProducts([]);
+        setCantidadTotal(0);
+        setPrecioTotal(0);
     }
     
     const isInCart = (id) =>
@@ -72,9 +72,8 @@ export const CartProvider = ({ children }) =>
     }
 
     return (
-        <cartContext.Provider value={{ cartProducts, addItem, removeItem, clear, isInCart }}>
+        <cartContext.Provider value={{ cartProducts, cantidadTotal, precioTotal, addItem, removeItem, clear, isInCart }}>
             { children }
         </cartContext.Provider>
     )
 } 
-

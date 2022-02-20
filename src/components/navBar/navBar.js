@@ -12,7 +12,7 @@ export const NavBar = () =>
             <ul className="navbar_ul">
                 <li className='navbar_li'><NavLink exact to='/' activeClassName="currentCategory">Home</NavLink></li>
                 <li className='navbar_li'><NavLink to='/category/:idCategory' activeClassName="currentCategory">La única categoría</NavLink></li>
-                <li><a href=''>Más para clickear</a></li>
+                <li className='navbar_li'><NavLink to='/cart' activeClassName="currentCategory">Ver carrito</NavLink></li>
             </ul>
 
             <CartWidget/>

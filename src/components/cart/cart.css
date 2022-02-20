@@ -1,0 +1,14 @@
+.cartBody
+{
+    border-style: solid;
+    border-color: grey;
+    background-color: rgb(247, 231, 167);
+    margin: 10px;
+    padding: 5px;
+    display: inline-block;
+}
+
+.cartDeleteBottom
+{
+    background-color: rgb(240, 132, 132);
+}
