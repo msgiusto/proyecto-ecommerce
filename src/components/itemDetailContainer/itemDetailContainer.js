@@ -15,17 +15,14 @@ export const ItemDetailContainer = () =>
 
     const getItem = async () =>
     {
-        // // Uso la API que nos pasó el profe para el fetch
+        // // // Uso la API que nos pasó el profe para el fetch
         // const getItemFetch = await fetch("https://franncode.vercel.app/api/products");
         // const getItemJson = await getItemFetch.json();
         // // Me quedo el item solicitado
         // setItem(getItemJson[itemId-1]);
 
         // Uso la base de Firebase
-        // const itemWithID = doc(collection(db, 'items', itemId))
-        // console.log("este es el itemID", itemId)
-        // console.log("este es lo que tiene doc", itemWithID)
-        // setItem({ id: itemWithID.id, ...itemWithID.data() })
+
         const { docs } = await getDocs(query(collection(db, 'items')))
 
         docs.forEach((element) => {
@@ -57,8 +54,8 @@ export const ItemDetailContainer = () =>
                         price={item.price}
                         pictureUrl={item.pictureUrl}
                         description={item.description}
-                        //id={item.id}
                         id={itemId}
+                        stock={item.stock}
                     />
                 )
                 :

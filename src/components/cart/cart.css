@@ -12,3 +12,23 @@
 {
     background-color: rgb(240, 132, 132);
 }
+
+.cartBuyBottom
+{
+    background-color: rgb(127, 216, 127)
+}
+
+.cartPIBody
+{
+    border-style: solid;
+    border-color: grey;
+    margin: 10px;
+    padding-bottom: 16px;
+    padding-right: 16px;
+    display: inline-block;
+}
+
+.cartLabel
+{
+    margin: 16px;
+}

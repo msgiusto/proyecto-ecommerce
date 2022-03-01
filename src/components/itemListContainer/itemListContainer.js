@@ -13,7 +13,7 @@ export const ItemListContainer = ({ greeting }) =>
 
     const getProductsAsync = async () => 
     {
-        // Uso la API que nos pasó el profe para el fetch
+        // // Uso la API que nos pasó el profe para el fetch
         // const getProductsFetch = await fetch("https://franncode.vercel.app/api/products");
         // const getProducts = await getProductsFetch.json();
         // setProducts(getProducts);

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { useState, useContext } from 'react'
 import { cartContext } from '../context/cartContext';
 
-export const ItemDetail = ({ title, price, pictureUrl, description, id }) => 
+export const ItemDetail = ({ title, price, pictureUrl, description, id, stock }) => 
 {
     // Estado interno del ItemDetail para guardar el valor que viene de ItemCount
     const [qToAdd, setQToAdd] = useState(0);
@@ -20,7 +20,7 @@ export const ItemDetail = ({ title, price, pictureUrl, description, id }) =>
         // se guarda la cantidad y se agrega a cartContex
         setQToAdd(quantityToAdd);
 
-        addItem({ id, title, description, price, quantityToAdd });
+        addItem({ id, title, description, price, quantityToAdd, stock });
 
         setShowItemCount(false);
     };
@@ -34,7 +34,7 @@ export const ItemDetail = ({ title, price, pictureUrl, description, id }) =>
                 <h4>${price}</h4>
             </div>
 
-            {showItemCount && <ItemCount stock={5} initial={1} onAddIC={onAdd} />}
+            {showItemCount && <ItemCount stock={stock} initial={1} onAddIC={onAdd} />}
             <Link to='/cart'><button>Terminar mi compra</button></Link>
         </div>
     );
