@@ -3,7 +3,7 @@ import { useContext, useState } from 'react';
 import { cartContext } from '../context/cartContext';
 import { Link } from 'react-router-dom';
 // imports para el uso de Firebase
-import { collection, addDoc, updateDoc, getDocs, query, where, doc, Timestamp} from 'firebase/firestore'
+import { collection, addDoc, updateDoc, doc, Timestamp} from 'firebase/firestore'
 import { db } from '../../firebase/firebase'
 
 
@@ -126,7 +126,7 @@ export const Cart = () =>
                 compraFinalizada &&
                 <div>
                     <h3>¡Compra exitosa!</h3>
-                    <p> El id de su operación es </p>
+                    {/* {<p> El id de su operación es {compraFinalizada}</p>} */}
                     {console.log("id compra finalizada", compraFinalizada)}
                     <Link to='/'><button>Comprar más</button></Link>
                 </div>

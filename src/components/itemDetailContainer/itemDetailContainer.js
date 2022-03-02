@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import { ItemDetail } from '../itemDetail/itemDetail'
 import { useParams } from 'react-router-dom/cjs/react-router-dom.min'
 // imports para el uso de Firebase
-import { collection, getDocs, query, where, doc } from 'firebase/firestore'
+import { collection, getDocs, query } from 'firebase/firestore'
 import { db } from '../../firebase/firebase'
 
 export const ItemDetailContainer = () =>
@@ -15,7 +15,8 @@ export const ItemDetailContainer = () =>
 
     const getItem = async () =>
     {
-        // // // Uso la API que nos pasó el profe para el fetch
+        // Dejo comentado la manera anterior por cuestiones académicas para mostrar la diferencia de cómo se manejaba anteriormente
+        // Uso la API que nos pasó el profe para el fetch
         // const getItemFetch = await fetch("https://franncode.vercel.app/api/products");
         // const getItemJson = await getItemFetch.json();
         // // Me quedo el item solicitado

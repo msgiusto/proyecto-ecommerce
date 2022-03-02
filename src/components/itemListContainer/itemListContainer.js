@@ -1,9 +1,8 @@
 import './itemListContainer.css'
-import { ItemCount } from '../itemCount/itemCount'
 import { useState, useEffect } from 'react'
 import { ItemList } from '../itemList/itemList'
 // imports para el uso de Firebase
-import { collection, getDocs, query, where, doc } from 'firebase/firestore'
+import { collection, getDocs, query } from 'firebase/firestore'
 import { db } from '../../firebase/firebase'
 
 export const ItemListContainer = ({ greeting }) => 
@@ -13,7 +12,8 @@ export const ItemListContainer = ({ greeting }) =>
 
     const getProductsAsync = async () => 
     {
-        // // Uso la API que nos pasó el profe para el fetch
+        // Dejo comentado la manera anterior por cuestiones académicas para mostrar la diferencia de cómo se manejaba anteriormente
+        // Uso la API que nos pasó el profe para el fetch
         // const getProductsFetch = await fetch("https://franncode.vercel.app/api/products");
         // const getProducts = await getProductsFetch.json();
         // setProducts(getProducts);
